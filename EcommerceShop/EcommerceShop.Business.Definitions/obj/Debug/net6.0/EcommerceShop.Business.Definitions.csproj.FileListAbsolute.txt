@@ -1,0 +1,14 @@
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\bin\Debug\net6.0\EcommerceShop.Business.Definitions.deps.json
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\bin\Debug\net6.0\EcommerceShop.Business.Definitions.runtimeconfig.json
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\bin\Debug\net6.0\EcommerceShop.Business.Definitions.dll
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\bin\Debug\net6.0\EcommerceShop.Business.Definitions.pdb
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.csproj.AssemblyReference.cache
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.AssemblyInfoInputs.cache
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.AssemblyInfo.cs
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.csproj.CoreCompileInputs.cache
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.dll
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\refint\EcommerceShop.Business.Definitions.dll
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.pdb
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\EcommerceShop.Business.Definitions.genruntimeconfig.cache
+C:\Users\molha\OneDrive\Desktop\FHS\Master\02_Semester\Master_Projekt\Projekt\ecommerce-shop\EcommerceShop\EcommerceShop.Business.Definitions\obj\Debug\net6.0\ref\EcommerceShop.Business.Definitions.dll
