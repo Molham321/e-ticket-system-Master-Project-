@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EcommerceShop.Business.Definitions.Data.Config;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace EcommerceShop.Business.Definitions.Data
 {
@@ -11,7 +8,20 @@ namespace EcommerceShop.Business.Definitions.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBilder)
+        {
+            // Configure entity relationships using entity configurations
+            modelBilder.ApplyConfiguration(new Actor_MovieConfiguration());
+
+            base.OnModelCreating(modelBilder);
+        }
+
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actor_Movie> Actors_Movies { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Producer> Producers { get; set; }
     }
 }
