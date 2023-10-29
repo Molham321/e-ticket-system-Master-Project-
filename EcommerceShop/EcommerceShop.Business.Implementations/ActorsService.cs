@@ -8,7 +8,11 @@ namespace EcommerceShop.Business.Implementations
     {
         private readonly AppDbContext _context;
 
-        public ActorsService(AppDbContext context) { _context = context; }
+        public ActorsService(AppDbContext context) 
+        { 
+            _context = context;
+            _context.Database.Migrate();
+        }
 
         public void Add(Actor actor)
         {
