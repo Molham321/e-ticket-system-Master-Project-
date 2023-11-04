@@ -17,7 +17,7 @@ namespace EcommerceShop.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAll();
+            var data = await _service.GetAllAsync();
             return View(data);
         }
 
@@ -30,13 +30,26 @@ namespace EcommerceShop.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
         {
-            //if(!ModelState.IsValid) Frage: das funktioniert nicht und gibt immer true aus. ich habe es getestet ohne und es fuktioniert ganu gut!
+            //if (!ModelState.IsValid) //Frage: das funktioniert nicht und gibt immer true aus.ich habe es getestet ohne und es fuktioniert ganu gut!
             //{
             //    return View(actor);
             //}
-            _service.Add(actor);
+            await _service.AddAsync(actor);
             return RedirectToAction(nameof(Index));
 
+        }
+
+        // Get: Actors/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if(actorDetails == null)
+            {
+                return View("Empty");
+            }
+
+            return View(actorDetails);
         }
     }
 }
