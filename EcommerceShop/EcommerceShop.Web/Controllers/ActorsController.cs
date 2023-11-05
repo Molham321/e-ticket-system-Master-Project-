@@ -1,5 +1,5 @@
-﻿using EcommerceShop.Business.Definitions;
-using EcommerceShop.Business.Definitions.Data;
+﻿
+using EcommerceShop.Business.Definitions;
 using EcommerceShop.Business.Implementations;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,7 +30,7 @@ namespace EcommerceShop.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
         {
-            if (!ModelState.IsValid) //Frage: das funktioniert nicht und gibt immer true aus.ich habe es getestet ohne und es fuktioniert ganu gut!
+            if (!ModelState.IsValid)
             {
                 return View(actor);
             }
@@ -67,7 +67,7 @@ namespace EcommerceShop.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
         {
-            if (!ModelState.IsValid) //Frage: das funktioniert nicht und gibt immer true aus.ich habe es getestet ohne und es fuktioniert ganu gut!
+            if (!ModelState.IsValid)
             {
                 //foreach (var modelState in ModelState.Values)
                 //{
@@ -81,6 +81,31 @@ namespace EcommerceShop.Web.Controllers
                 return View(actor);
             }
             await _service.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Actors/Delete/{id}
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if(actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
