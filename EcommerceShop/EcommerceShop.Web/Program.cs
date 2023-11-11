@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IActorsService, ActorsService>();
+builder.Services.AddScoped<IProducersService, ProducersService>();
 
 // DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options =>

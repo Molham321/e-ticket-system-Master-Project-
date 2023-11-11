@@ -1,21 +1,64 @@
-﻿using EcommerceShop.Business.Definitions.Data;
+﻿
+using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceShop.Web.Controllers
 {
     public class ProducersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProducersService _service;
 
-        public ProducersController(AppDbContext context)
+        public ProducersController(IProducersService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var allProducers = await _context.Producers.ToListAsync();
-            return View(allProducers);
+            var data = await _service.GetAllAsync();
+            return View(data);
+        }
+
+        // Get: Producers/Details/{id}
+        public async Task<IActionResult> Details(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+
+            if(producerDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(producerDetails);
+        }
+
+        //Get: Producers/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        //Get: Producers/Edit/{id}
+        public async Task<IActionResult> Edit(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+            if(producerDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(producerDetails);
+        }
+
+        //Get: Producers/Delete/{id}
+        public async Task<IActionResult> Delete(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+            if (producerDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(producerDetails);
         }
     }
 }
