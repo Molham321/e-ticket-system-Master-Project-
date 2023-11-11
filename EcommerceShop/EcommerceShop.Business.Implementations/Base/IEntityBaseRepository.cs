@@ -1,4 +1,6 @@
 ﻿
+using EcommerceShop.Business.Definitions.Base;
+
 namespace EcommerceShop.Business.Implementations.Base
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()

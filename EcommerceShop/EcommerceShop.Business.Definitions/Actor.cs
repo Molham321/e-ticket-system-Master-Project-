@@ -1,9 +1,10 @@
 ﻿
+using EcommerceShop.Business.Definitions.Base;
 using System.ComponentModel.DataAnnotations;
 
 namespace EcommerceShop.Business.Definitions
 {
-    public class Actor
+    public class Actor : IEntityBase
     {
         [Key]
         public int Id { get; set; }

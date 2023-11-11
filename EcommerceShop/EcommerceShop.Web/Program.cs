@@ -1,11 +1,12 @@
 using EcommerceShop.Business.Definitions.Data;
-using EcommerceShop.Business.Implementations;
+using EcommerceShop.Business.Implementations.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddScoped<IActorsService, ActorsService>();
 
 // DbContext configuration

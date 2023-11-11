@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EcommerceShop.Business.Definitions.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace EcommerceShop.Business.Definitions
 {
-    public class Producer
+    public class Producer : IEntityBase
     {
         [Key]
         public int Id { get; set; }

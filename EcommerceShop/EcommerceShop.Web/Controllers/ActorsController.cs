@@ -1,6 +1,6 @@
 ﻿
 using EcommerceShop.Business.Definitions;
-using EcommerceShop.Business.Implementations;
+using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceShop.Web.Controllers

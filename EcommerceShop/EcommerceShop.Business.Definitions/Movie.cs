@@ -1,10 +1,11 @@
-﻿using EcommerceShop.Business.Definitions.Data.Enums;
+﻿using EcommerceShop.Business.Definitions.Base;
+using EcommerceShop.Business.Definitions.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcommerceShop.Business.Definitions
 {
-    public class Movie
+    public class Movie : IEntityBase
     {
         [Key]
         public int Id { get; set; }

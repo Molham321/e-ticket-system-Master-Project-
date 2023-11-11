@@ -1,5 +1,4 @@
-﻿
-namespace EcommerceShop.Business.Implementations.Base
+﻿namespace EcommerceShop.Business.Definitions.Base
 {
     public interface IEntityBase
     {
