@@ -1,4 +1,5 @@
 ﻿
+using EcommerceShop.Business.Definitions;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,17 @@ namespace EcommerceShop.Web.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+            await _service.AddAsync(producer);
+            return RedirectToAction(nameof(Index));
         }
 
         //Get: Producers/Edit/{id}

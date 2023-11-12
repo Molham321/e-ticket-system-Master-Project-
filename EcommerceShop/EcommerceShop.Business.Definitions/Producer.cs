@@ -21,6 +21,6 @@ namespace EcommerceShop.Business.Definitions
         public string Bio { get; set; }
 
         // Relationships
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }
