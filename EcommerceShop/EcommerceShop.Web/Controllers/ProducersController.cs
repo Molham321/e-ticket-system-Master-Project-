@@ -61,6 +61,17 @@ namespace EcommerceShop.Web.Controllers
             return View(producerDetails);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+            await _service.UpdateAsync(id, producer);
+            return RedirectToAction(nameof(Index));
+        }
+
         //Get: Producers/Delete/{id}
         public async Task<IActionResult> Delete(int id)
         {
