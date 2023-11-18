@@ -1,3 +1,4 @@
+
 using EcommerceShop.Business.Definitions.Data;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 
 // DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
