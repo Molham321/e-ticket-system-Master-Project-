@@ -1,6 +1,7 @@
 ﻿
 using EcommerceShop.Business.Definitions;
 using EcommerceShop.Business.Definitions.Data;
+using EcommerceShop.Business.Definitions.Data.ViewModels;
 using EcommerceShop.Business.Implementations.Base;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,18 @@ namespace EcommerceShop.Business.Implementations.Services
                 .FirstOrDefaultAsync(n => n.Id == id);
 
             return movieDetails;
+        }
+
+        public async Task<NewMovieDropdownsVM> GetNewMovieDropdownsValues()
+        {
+            var response = new NewMovieDropdownsVM()
+            {
+                Actors = await _context.Actors.OrderBy(n => n.FullName).ToListAsync(),
+                Cinemas = await _context.Cinemas.OrderBy(n => n.Name).ToListAsync(),
+                Producers = await _context.Producers.OrderBy(n => n.FullName).ToListAsync()
+            };
+
+            return response;
         }
     }
 }
