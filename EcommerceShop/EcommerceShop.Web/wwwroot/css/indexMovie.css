@@ -1,0 +1,112 @@
+﻿/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Header Styles */
+.card-header {
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.bg-info {
+    background-color: #007bff !important;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    /* Image Styles */
+    .card img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.25rem 0 0 0.25rem;
+    }
+
+/* Footer Styles */
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Badge Styles */
+.badge {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.bg-primary {
+    background-color: #007bff !important;
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-outline-primary:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Floating Action Button Styles */
+.text-white a.btn.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .text-white a.btn.btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Add New Button Styles */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
