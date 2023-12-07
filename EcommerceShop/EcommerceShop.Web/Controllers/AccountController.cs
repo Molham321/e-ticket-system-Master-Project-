@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcommerceShop.Business.Definitions.Data.ViewModels;
+using EcommerceShop.Business.Definitions.Data.Static;
 
 namespace EcommerceShop.Web.Controllers
 {
@@ -87,5 +88,11 @@ namespace EcommerceShop.Web.Controllers
             return View("RegisterCompleted");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Movies");
+        }
     }
 }
