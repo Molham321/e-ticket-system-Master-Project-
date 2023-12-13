@@ -1,4 +1,5 @@
-﻿using EcommerceShop.Business.Definitions.Data;
+﻿
+using EcommerceShop.Business.Definitions.Data;
 using EcommerceShop.Business.Definitions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,7 @@ namespace EcommerceShop.Web.Controllers
             _context = context;
         }
 
+        // TODO: _context auslagern
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
@@ -49,11 +51,11 @@ namespace EcommerceShop.Web.Controllers
                         return RedirectToAction("Index", "Movies");
                     }
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                TempData["Error"] = "Wrong1 credentials. Please, try again!";
                 return View(loginVM);
             }
 
-            TempData["Error"] = "Wrong credentials. Please, try again!";
+            TempData["Error"] = "Wrong2 credentials. Please, try again!";
             return View(loginVM);
         }
 

@@ -1,4 +1,5 @@
 ﻿using EcommerceShop.Business.Definitions.Data;
+using EcommerceShop.Business.Definitions.Data.Static;
 using EcommerceShop.Business.Definitions.Data.ViewModels;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +10,7 @@ using Microsoft.VisualBasic;
 
 namespace EcommerceShop.Web.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class MoviesController : Controller
     {
         private readonly IMoviesService _service;
