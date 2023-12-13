@@ -5,57 +5,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Update Cinema</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group text-center">
-                        <img class="border-info rounded-circle" style="max-width: 150px" id="logoPerview" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Logo" class="control-label"></label>
-                        <input asp-for="Logo" class="form-control" />
-                        <span asp-validation-for="Logo" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Update" class="btn btn-outline-success float-end" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
-                    </div>
-                </form>
-            </div>
+<link rel="stylesheet" href="~/css/actionViews.css" asp-append-version="true" />
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center mb-4">Update Cinema</h1>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group text-center">
+                    <img class="img-fluid rounded-circle" style="max-width: 150px" id="logoPreview" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Logo" class="control-label">Logo</label>
+                    <input asp-for="Logo" class="form-control" />
+                    <span asp-validation-for="Logo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Description</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-success float-end" />
+                    <a class="btn btn-secondary" asp-action="Index">Show All</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-
     <script>
-
         $(document).ready(function () {
-            var output = document.getElementById('logoPerview');
+            var output = document.getElementById('logoPreview');
             output.src = $("#Logo").val();
         })
 
         $("#Logo").on("change", function () {
-            var output = document.getElementById("logoPerview");
+            var output = document.getElementById("logoPreview");
             output.src = $(this).val();
         })
     </script>

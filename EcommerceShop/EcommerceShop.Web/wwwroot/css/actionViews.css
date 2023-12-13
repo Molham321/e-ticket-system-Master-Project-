@@ -1,0 +1,31 @@
+﻿.container {
+    max-width: 800px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+img {
+    border: 2px solid #17a2b8;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+.float-end {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 4px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}

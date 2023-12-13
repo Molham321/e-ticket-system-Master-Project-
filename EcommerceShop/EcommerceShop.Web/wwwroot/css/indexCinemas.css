@@ -1,0 +1,32 @@
+﻿/* Center the content within the container */
+.col-md-8.offset-md-2 {
+    text-align: center;
+}
+
+/* Style the table and align text in the center */
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+    /* Style the table header */
+    .table th {
+        text-align: center;
+    }
+
+/* Add some spacing between table cells */
+.align-middle {
+    vertical-align: middle;
+}
+
+/* Style the fixed button at the bottom right */
+.fixed-button {
+    position: fixed;
+    right: 25px;
+    bottom: 75px;
+}
+
+/* Style the actions buttons */
+.btn-action {
+    margin-right: 5px;
+}
