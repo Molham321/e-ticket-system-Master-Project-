@@ -1,8 +1,51 @@
 # Ecommerce Shop
 
+Ein Materprojekt von Molham Al-khodari
 
+## About
 
-## Getting started
+es geht um ein online Ticket Wep Applikation. 
+
+Nutzer können folgendes:
+1. surfen
+2. Movie suchen
+3. Registieren
+4. Anmelden
+5. Auslogen
+7. Movie finden unmd details anschauen
+8. Actors und Cinemas Details anschauen 
+8. Movie Ticket Kaufen
+9. mit Paypal bezahlen
+10. Order anschauen
+
+Admin kann folgendes:
+1. Cinemas, Actors und Movie erstellen bearbeiten oder löschen 
+2. alle Nutzer anschauen
+3. alle Orders anschauen
+
+## Installation
+man braucht Visual studio 2022
+ASP.NET version 6.0
+
+folgende schritte um den Projekt zu starten:
+Projekt als zip datei hinterladen oder Repo clonen mit
+
+```
+git clone git clone https://git.ai.fh-erfurt.de/mo2467al/ecommerce-shop.git
+```
+danach starten Sie das Projekt innerhalb von Visual Studio 2022.
+
+sollte es probleme geben mussen sie schauen ob ein Datenbank im SQL Server (localdb)\MSSQLLocalDB ein datenbank mit name ecommerce-app-db exsistiert. wenn nicht muss man es anliegen
+
+## Test Anmeldung Daten für User & Admin
+
+zum testen als User können folgende daten zum Anmeldung:
+Email: user@test.com
+Password: Test321.
+
+zum testn als Admin können folgende daten zum Anmeldung:
+Email: admin@test.com
+Password: Test321.
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
@@ -63,8 +106,6 @@ On some READMEs, you may see small images that convey metadata, such as whether 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
