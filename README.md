@@ -58,6 +58,12 @@ Starten Sie dann das Projekt in Visual Studio 2022.
 
 Falls Probleme auftreten, überprüfen Sie, ob eine Datenbank im SQL Server (localdb)\MSSQLLocalDB mit dem Namen "ecommerce-app-db" existiert. Andernfalls müssen Sie diese erstellen.
 
+![SQL Server](https://git.ai.fh-erfurt.de/mo2467al/ecommerce-shop/-/raw/main/documentation/photos/database.png?ref_type=heads)
+
+Nachdem Sie die Datenbank erstellt haben, führen Sie bitte einmal ein Update in der Paket-Manager-Konsole durch, um die Tabellen anzulegen:
+
+![SQL Server](https://git.ai.fh-erfurt.de/mo2467al/ecommerce-shop/-/raw/main/documentation/photos/paketManagerKonsole.png?ref_type=heads)
+
 ## Bezahlfunktion testen
 Um die Bezahlfunktion zu testen, erstellen Sie einen Sandbox-Account auf PayPal Developer.
 
