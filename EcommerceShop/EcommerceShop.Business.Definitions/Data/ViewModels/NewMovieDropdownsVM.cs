@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EcommerceShop.Business.Definitions.Data.ViewModels
+﻿namespace EcommerceShop.Business.Definitions.Data.ViewModels
 {
     public class NewMovieDropdownsVM
     {
