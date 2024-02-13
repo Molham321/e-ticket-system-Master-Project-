@@ -12,14 +12,18 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label class="form-label">Upload File</label>
+                        <input type="file" name="file" class="form-control" id="ProfilePictureURLInput" />
+                    </div>
                     <div class="form-group text-center">
-                        <img class="border-info rounded-circle" style="max-width: 150px" id="profilePicturePerview" />
+                        <img class="border-info rounded-circle" src="~/images/@Model.ProfilePictureURL" style="max-width: 150px" id="profilePicturePerview" />
                     </div>
                     <div class="form-group">
                         <label asp-for="ProfilePictureURL" class="control-label"></label>
-                        <input asp-for="ProfilePictureURL" class="form-control" />
+                        <input asp-for="ProfilePictureURL" class="form-control" readonly />
                         <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -48,15 +52,26 @@
     }
 
     <script>
-
         $(document).ready(function () {
             var output = document.getElementById('profilePicturePerview');
-            output.src = $("#ProfilePictureURL").val();
-        })
+            var originalSrc = output.src;
 
-        $("#ProfilePictureURL").on("change", function () {
-            var output = document.getElementById("profilePicturePerview");
-            output.src = $(this).val();
-        })
+            $("#ProfilePictureURLInput").on("change", function () {
+                var newImage = URL.createObjectURL(this.files[0]);
+                updatePreview(output, newImage);
+            });
+
+            function updatePreview(output, source) {
+                output.src = source;
+            }
+
+            function resetPreview() {
+                updatePreview(output, originalSrc);
+            }
+
+            $("form").on("reset", function () {
+                resetPreview();
+            });
+        });
     </script>
 }

@@ -1,5 +1,6 @@
 ﻿
 using EcommerceShop.Business.Definitions;
+using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,12 @@ namespace EcommerceShop.Web.Controllers
     {
 
         private readonly IActorsService _service;
+        private readonly IFileUploadService _uploadService;
 
-        public ActorsController(IActorsService service)
+        public ActorsController(IActorsService service, IFileUploadService uploadService)
         {
             _service = service;
+            _uploadService = uploadService;
         }
 
         public async Task<IActionResult> Index()
@@ -28,13 +31,18 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
+        public async Task<IActionResult> Create([Bind("FullName,Bio")]Actor actor, IFormFile file)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || file == null)
             {
                 return View(actor);
             }
+
+            actor.ProfilePictureURL = file.FileName;
+
+            await _uploadService.UploadFileAsync(file);
             await _service.AddAsync(actor);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -65,21 +73,19 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor, IFormFile? file)
         {
             if (!ModelState.IsValid)
             {
-                //foreach (var modelState in ModelState.Values)
-                //{
-                //    foreach (var error in modelState.Errors)
-                //    {
-                //        // Log or debug the error messages
-                //        Console.WriteLine(error.ErrorMessage);
-                //    }
-                //}
-
                 return View(actor);
             }
+
+            if (file != null)
+            {
+                actor.ProfilePictureURL = file.FileName;
+                await _uploadService.UploadFileAsync(file);
+            }
+
             await _service.UpdateAsync(id, actor);
             return RedirectToAction(nameof(Index));
         }

@@ -37,7 +37,6 @@ namespace EcommerceShop.Web.Controllers
         {
             if (!ModelState.IsValid || file == null)
             {
-                ModelState.AddModelError("file", "Please upload a logo.");
                 return View(cinema);
             }
 
