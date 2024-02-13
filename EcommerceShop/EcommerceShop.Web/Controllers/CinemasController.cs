@@ -76,12 +76,19 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Logo,Name,Description")] Cinema cinema)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Logo,Name,Description")] Cinema cinema, IFormFile? file)
         {
             if (!ModelState.IsValid)
             {
                 return View(cinema);
             }
+
+            if(file != null)
+            {
+                cinema.Logo = file.FileName;
+                await _uploadService.UploadFileAsync(file);
+            }
+
             await _service.UpdateAsync(id, cinema);
             return RedirectToAction(nameof(Index));
         }
