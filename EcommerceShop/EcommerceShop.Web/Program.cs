@@ -2,6 +2,7 @@
 using EcommerceShop.Business.Definitions;
 using EcommerceShop.Business.Definitions.Data;
 using EcommerceShop.Business.Implementations.Cart;
+using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
+builder.Services.AddScoped<IFileUploadService, LocalFileUploadService>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));

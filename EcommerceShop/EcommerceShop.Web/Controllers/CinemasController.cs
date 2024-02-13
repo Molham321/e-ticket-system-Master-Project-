@@ -1,5 +1,6 @@
 ﻿
 using EcommerceShop.Business.Definitions;
+using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,14 @@ namespace EcommerceShop.Web.Controllers
     public class CinemasController : Controller
     {
         private readonly ICinemasService _service;
+        private readonly IFileUploadService _uploadService;
 
-        public CinemasController(ICinemasService service)
+        public static string? FilePath;
+
+        public CinemasController(ICinemasService service, IFileUploadService uploadService)
         {
             _service = service;
+            _uploadService = uploadService;
         }
 
         public async Task<IActionResult> Index()
@@ -26,16 +31,23 @@ namespace EcommerceShop.Web.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Logo,Name,Description")] Cinema cinema)
+        public async Task<IActionResult> Create([Bind("Name,Description")] Cinema cinema, IFormFile file)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || file == null)
             {
+                ModelState.AddModelError("file", "Please upload a logo.");
                 return View(cinema);
             }
+
+            cinema.Logo = file.FileName;
+
+            await _uploadService.UploadFileAsync(file);
             await _service.AddAsync(cinema);
             return RedirectToAction(nameof(Index));
         }
+
 
         // Get: Cinemas/Details/{id}
         public async Task<IActionResult> Details(int id)

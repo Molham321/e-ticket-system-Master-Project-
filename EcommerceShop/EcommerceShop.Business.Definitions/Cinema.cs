@@ -9,8 +9,7 @@ namespace EcommerceShop.Business.Definitions
         public int Id { get; set; }
 
         [Display(Name = "Logo")]
-        [Required(ErrorMessage = "Cinema Logo is required")]
-        public string Logo { get; set; }
+        public string? Logo { get; set; }
 
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Cinema Name is required")]
