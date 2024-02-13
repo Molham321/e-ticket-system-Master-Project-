@@ -1,5 +1,6 @@
 ﻿
 using EcommerceShop.Business.Definitions;
+using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,14 @@ namespace EcommerceShop.Web.Controllers
     public class ProducersController : Controller
     {
         private readonly IProducersService _service;
+        private readonly IFileUploadService _uploadService;
 
-        public ProducersController(IProducersService service)
+
+        public ProducersController(IProducersService service, IFileUploadService uploadService)
         {
             _service = service;
+            _uploadService = uploadService;
+
         }
         public async Task<IActionResult> Index()
         {
@@ -39,12 +44,16 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Producer producer)
+        public async Task<IActionResult> Create([Bind("FullName,Bio")] Producer producer, IFormFile file)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || file == null)
             {
                 return View(producer);
             }
+
+            producer.ProfilePictureURL = file.FileName;
+
+            await _uploadService.UploadFileAsync(file);
             await _service.AddAsync(producer);
             return RedirectToAction(nameof(Index));
         }
@@ -62,12 +71,19 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Producer producer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Producer producer, IFormFile? file)
         {
             if (!ModelState.IsValid)
             {
                 return View(producer);
             }
+
+            if (file != null)
+            {
+                producer.ProfilePictureURL = file.FileName;
+                await _uploadService.UploadFileAsync(file);
+            }
+
             await _service.UpdateAsync(id, producer);
             return RedirectToAction(nameof(Index));
         }

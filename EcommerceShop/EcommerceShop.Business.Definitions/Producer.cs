@@ -9,8 +9,7 @@ namespace EcommerceShop.Business.Definitions
         public int Id { get; set; }
 
         [Display(Name = "Profile Picture")]
-        [Required(ErrorMessage = "Profile Picture is required")]
-        public string ProfilePictureURL { get; set; }
+        public string? ProfilePictureURL { get; set; }
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Full Name is required")]
