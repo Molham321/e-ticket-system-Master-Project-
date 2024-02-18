@@ -1,14 +1,10 @@
-﻿using EcommerceShop.Business.Definitions;
-using EcommerceShop.Business.Definitions.Data;
-using EcommerceShop.Business.Definitions.Data.Static;
+﻿using EcommerceShop.Business.Definitions.Data.Static;
 using EcommerceShop.Business.Definitions.Data.ViewModels;
 using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace EcommerceShop.Web.Controllers
 {
