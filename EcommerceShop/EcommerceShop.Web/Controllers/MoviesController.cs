@@ -1,6 +1,8 @@
-﻿using EcommerceShop.Business.Definitions.Data;
+﻿using EcommerceShop.Business.Definitions;
+using EcommerceShop.Business.Definitions.Data;
 using EcommerceShop.Business.Definitions.Data.Static;
 using EcommerceShop.Business.Definitions.Data.ViewModels;
+using EcommerceShop.Business.Implementations.FileUploadService;
 using EcommerceShop.Business.Implementations.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +16,13 @@ namespace EcommerceShop.Web.Controllers
     public class MoviesController : Controller
     {
         private readonly IMoviesService _service;
+        private readonly IFileUploadService _uploadService;
 
-        public MoviesController(IMoviesService service)
+        public MoviesController(IMoviesService service, IFileUploadService uploadService)
         {
             _service = service;
+            _uploadService = uploadService;
+
         }
 
         [AllowAnonymous]
@@ -64,20 +69,23 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(NewMovieVM movie)
+        public async Task<IActionResult> Create(NewMovieVM movie, IFormFile file)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || file == null)
             {
                 var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
 
                 ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
-
                 return View(movie);
             }
 
+            movie.ImageURL = file.FileName;
+
+            await _uploadService.UploadFileAsync(file);
             await _service.AddNewMovieAsync(movie);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -111,7 +119,7 @@ namespace EcommerceShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, NewMovieVM movie)
+        public async Task<IActionResult> Edit(int id, NewMovieVM movie, IFormFile? file)
         {
             if (id != movie.Id) return View("NotFound");
 
@@ -124,6 +132,12 @@ namespace EcommerceShop.Web.Controllers
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
 
                 return View(movie);
+            }
+
+            if (file != null)
+            {
+                movie.ImageURL = file.FileName;
+                await _uploadService.UploadFileAsync(file);
             }
 
             await _service.UpdateMovieAsync(movie);

@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="row">
@@ -39,9 +39,13 @@
                                 <span asp-validation-for="Price" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="ImageURL" class="control-label"></label>
-                                <input asp-for="ImageURL" class="form-control" />
+                                <label asp-for="ImageURL" class="control-label">Logo</label>
+                                <input asp-for="ImageURL" class="form-control" readonly />
                                 <span asp-validation-for="ImageURL" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Upload File</label>
+                                <input type="file" name="file" class="form-control" id="LogoInput" />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -76,7 +80,7 @@
                     </div>
 
                     <div class="col-md-4 offset-4 text-center">
-                        <img width="100%" id="ImageUrlPreview" />
+                        <img src="~/images/@Model.ImageURL" width="100%" id="ImageUrlPreview" />
                     </div>
 
                     <div class="form-group">
@@ -93,15 +97,31 @@
 </div>
 
 @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
     <script>
         $(document).ready(function () {
-            var output = document.getElementById("ImageUrlPreview");
-            output.src = $("#ImageURL").val();
-        });
+            var output = document.getElementById('ImageUrlPreview');
+            var originalSrc = output.src;
 
-        $("#ImageURL").on("change", function () {
-            var output = document.getElementById("ImageUrlPreview");
-            output.src = $(this).val();
-        })
+            $("#LogoInput").on("change", function () {
+                var newImage = URL.createObjectURL(this.files[0]);
+                updatePreview(output, newImage);
+            });
+
+            function updatePreview(output, source) {
+                output.src = source;
+            }
+
+            function resetPreview() {
+                updatePreview(output, originalSrc);
+            }
+
+            $("form").on("reset", function () {
+                resetPreview();
+            });
+        });
     </script>
 }
