@@ -76,7 +76,20 @@ namespace EcommerceShop.Business.Implementations.Cart
             return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n => n.Movie).ToList());
         }
 
-        public double GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Movie.Price * n.Amount).Sum();
+        //public double GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Movie.Price * n.Amount).Sum();
+
+        public double GetShoppingCartTotal()
+        {
+            double subtotal = _context.ShoppingCartItems
+                .Where(n => n.ShoppingCartId == ShoppingCartId)
+                .Select(n => n.Movie.Price * n.Amount)
+                .Sum();
+
+            double taxRate = 0.19; // 19% Mehrwertsteuersatz
+            double tax = subtotal * taxRate;
+
+            return subtotal + tax;
+        }
 
         public async Task ClearShoppingCartAsync()
         {
