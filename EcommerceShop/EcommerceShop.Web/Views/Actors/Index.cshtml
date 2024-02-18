@@ -4,11 +4,10 @@
     ViewData["Title"] = "List of Actors";
 }
 
-<div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
 
-            <table class="table table-bordered table-hover">
+            <table class="table">
                 <thead class="thead-dark">
                     <tr class="text-center">
                         <th>Profile Picture</th>
@@ -50,6 +49,5 @@
 
         </div>
     </div>
-</div>
 
 @await Html.PartialAsync("_CreateItem", "Actors")
